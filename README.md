@@ -55,3 +55,6 @@ Initially, the simulation presented a uniform distribution of fragments, represe
 
 The simulation successfully illustrated how the force of impact affects the spread of glass fragments in a circular room. It demonstrated a clear transition from a centralized peak in fragment density to a more uniform distribution as force increased. This study provides a foundational understanding that can be applied in practical scenarios where glass breakage patterns are critical evidence. Future work could expand on this model by incorporating additional factors such as the angle of impact, glass properties, and environmental conditions.
 
+![Glass Fragment Distribution Simulation](Glass.gif)
+
+
