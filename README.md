@@ -10,7 +10,42 @@ Glass breakage is a common yet complex phenomenon with multiple variables affect
 
 ## Methodology
 
-The simulation was developed using Python, leveraging libraries such as NumPy for numerical operations and Matplotlib for 3D visualization. The fragments' distribution was modeled as a bivariate normal distribution with the standard deviation inversely proportional to the applied force, allowing the simulation to represent wider spreads with increased force. A slider control enabled real-time variation of the force parameter, visually demonstrating changes in the distribution on a 3D surface plot. The model was calibrated to ensure that the fragments' dispersion would not exceed the boundaries of a circular room with a predefined diameter.
+The model's foundation is a bivariate normal distribution, characterized by the probability density function (pdf):
+
+$$
+f(\mathbf{x}; \mu, \Sigma) = \frac{1}{2\pi|\Sigma|^{\frac{1}{2}}} \exp\left(-\frac{1}{2}(\mathbf{x} - \mu)^\top\Sigma^{-1}(\mathbf{x} - \mu)\right)
+$$
+
+where:
+
+- $\mathbf{x} = (x, y)$ represents a point in the circular room,
+- $\mu = (\mu_x, \mu_y)$ is the mean vector, corresponding to the impact's central location,
+- $\Sigma$ is the covariance matrix, where $\Sigma = \begin{bmatrix}\sigma_x^2 & \rho\sigma_x\sigma_y \\ \rho\sigma_x\sigma_y & \sigma_y^2\end{bmatrix}$,
+- $\sigma_x$ and $\sigma_y$ are the standard deviations of $x$ and $y$, respectively, and
+- $\rho$ is the correlation coefficient, set to 0 for independence between $x$ and $y$.
+
+The standard deviations are adjusted based on the force parameter, which is inversely proportional to the applied force, $F$, thus:
+
+$$
+\sigma_x = \sigma_y = \frac{D}{2F}
+$$
+
+where $D$ is the diameter of the room, ensuring that as the force increases, the dispersion of fragments becomes more widespread.
+
+The simulated room is represented by a circular domain with radius $r = \frac{D}{2}$. To adhere to the physical boundaries of this space, we apply a mask to the distribution:
+
+$$
+Z(x, y) = \begin{cases} 
+f(\mathbf{x}; \mu, \Sigma), & \text{if } x^2 + y^2 \leq r^2 \\
+0, & \text{otherwise}
+\end{cases}
+$$
+
+where $Z(x, y)$ represents the final adjusted probability density over the circular domain.
+
+For visualization, we used a mesh grid with coordinates $(X, Y)$ spanning the room's diameter, and $Z$ values were computed using the masked distribution. This setup was implemented using Python with NumPy for numerical computations and Matplotlib for rendering the 3D surface plot. A Slider widget provided by Matplotlib facilitated the dynamic variation of the force parameter, allowing the observation of changes in real-time.
+
+
 
 ## Development
 
