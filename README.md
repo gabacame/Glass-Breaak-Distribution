@@ -4,7 +4,7 @@
 
 ## Abstract
 
-The behavior of shattered glass fragments in a confined space, particularly in a circular room, has implications in safety protocols and accident forensics. This paper presents a computational model simulating the distribution of glass fragments resulting from a centrally-located impact in a circular room. By employing a bivariate normal distribution, the model varies the dispersion of fragments as a function of the applied force, illustrating a significant shift in the distribution pattern. The study aims to understand the correlation between the applied force and the area of spread, potentially serving as a reference for reconstructing events leading to similar breakage patterns.
+The behavior of shattered glass fragments in a confined space, particularly in a circular room, has implications in safety protocols and accident forensics. This repository presents a computational model simulating the distribution of glass fragments resulting from a centrally-located impact in a circular room. By employing a bivariate normal distribution, the model varies the dispersion of fragments as a function of the applied force, illustrating a significant shift in the distribution pattern. The study aims to understand the correlation between the applied force and the area of spread, potentially serving as a reference for reconstructing events leading to similar breakage patterns.
 
 ## Introduction
 
